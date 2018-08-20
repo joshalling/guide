@@ -7,11 +7,75 @@ To style links/elements properly the rules should be defined in the order :- <br
 :link - :visited - :hover - :active
   
 **Syntax :**
-```
+```css
  selector:hover {
     css declarations;
  }
 ```
+
+## More Examples
+Below are some more complex examples of what you can do with the `:hover` psuedo-class. Keep in mind that the `.second` div **must** come after the `.first ` div in all of these examples.
+
+1. When you hover over an element change an adjacent sibling.
+```html
+<style>
+  .first:hover + .second {
+    background-color: blue;
+  }
+</style>
+
+<div class="first">First</div>
+<div class="second">Second</div>
+```
+The code above will change the background color of `.second` to blue when you hover over `.first`.
+
+2. When you hover over an element change a general sibling.
+```html
+<style>
+  .first:hover ~ .second {
+    background-color: blue;
+  }
+</style>
+
+<div class="first">First</div>
+<div class="middle">Middle</div>
+<div class="second">Second</div>
+```
+This example gives a little bit more flexability as the two elements no longer have to be directly adjacent.
+
+3. When you hover over an element change a direct descendant.
+```html
+<style>
+  .first:hover > .second {
+    background-color: blue;
+  }
+</style>
+
+<div class="first">
+  First
+  <div class="second">Second</div>
+</div>
+```
+The code above will change the background color of `.second` to blue when you hover over `.first`. 
+
+2. When you hover over an element change a general descendant.
+```html
+<style>
+  .first:hover .second {
+    background-color: blue;
+  }
+</style>
+
+<div class="first">
+  First
+  <div class="container">
+    Container
+    <div class="second">Second</div>
+  </div>
+</div>
+```
+
+As in example 2 this also gives more flexability as the two elements no longer have to be directly adjacent. You will notice that the hoverable area is bigger in examples 3 and 4. This happens because you are still hovering over `.first` as long as the cursor is over one of its children.
 
 #### More Information:
 <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/%3Ahover' target='_blank'>MDN Web Docs</a><br>
